@@ -43,25 +43,25 @@
 </template>
 
 <script>
-import { mapState, mapGetters, mapMutations, mapActions } from "vuex";
+import { mapState, mapGetters, mapMutations, mapActions } from 'vuex';
 
 export default {
-  name: "Count",
+  name: 'Count',
   props: {
-    msg: String,
+    msg: String
   },
 
   computed: {
-    ...mapState({ count: (state) => state.count }),
-    ...mapGetters(["getPeople", "getPeopleLength", "getPeopleByAge2"]),
+    ...mapState({ count: state => state.count }),
+    ...mapGetters(['getPeople', 'getPeopleLength', 'getPeopleByAge2']),
     doubleCount() {
       //  return this.$store.state.count * 2;
       return this.count * 3;
-    },
+    }
   },
   methods: {
-    ...mapMutations(["increment", "decrement", "div"]),
-    ...mapActions(["division"]),
+    ...mapMutations(['increment', 'decrement', 'div']),
+    ...mapActions(['division']),
     add() {
       //  this.$store.commit("increment");
       this.increment();
@@ -72,8 +72,8 @@ export default {
     },
     mul() {
       this.$store.commit({
-        type: "mul",
-        amount: 10,
+        type: 'mul',
+        amount: 10
       });
     },
     /* devide() {
@@ -83,8 +83,13 @@ export default {
     div() {
       //  非简写：this.$store.dispatch("division");
       this.division();
-    },
-  },
+      /* 有一个参数：
+      非简写：this.$store.dispatch("division"， XX);
+      多个参数可以用对象的形式：
+      this.$store.dispatch("division"， ｛a:XX，b:XX｝);
+      */
+    }
+  }
 };
 </script>
 
